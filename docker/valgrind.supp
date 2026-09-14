@@ -1,0 +1,12 @@
+# Suppressions for libasm work.
+# Keep this file EMPTY of real suppressions unless you have a proven reason —
+# a leak you suppressed is a leak you still have at defense.
+#
+# Template, in case you ever need one:
+#
+# {
+#    name_of_suppression
+#    Memcheck:Leak
+#    fun:malloc
+#    fun:some_library_function
+# }

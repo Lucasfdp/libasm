@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" font-family="Menlo, Consolas, monospace">
+  <rect x="0" y="0" width="640" height="420" fill="#ffffff"/>
+
+  <text x="320" y="26" text-anchor="middle" font-size="15" fill="#0f172a">Stack during a call — grows downward (addresses decrease going down)</text>
+
+  <!-- address axis -->
+  <line x1="60" y1="50" x2="60" y2="380" stroke="#94a3b8" stroke-width="1.5"/>
+  <polygon points="60,45 55,55 65,55" fill="#94a3b8"/>
+  <text x="30" y="55" font-size="11" fill="#64748b" text-anchor="middle">higher</text>
+  <polygon points="60,385 55,375 65,375" fill="#94a3b8"/>
+  <text x="30" y="398" font-size="11" fill="#64748b" text-anchor="middle">lower</text>
+
+  <!-- boxes stacked top(high addr) to bottom(low addr) -->
+  <g font-size="13">
+    <rect x="140" y="60"  width="360" height="60" fill="#eef2f7" stroke="#94a3b8"/>
+    <text x="320" y="85"  text-anchor="middle" fill="#1e293b">caller's stack frame</text>
+    <text x="320" y="105" text-anchor="middle" fill="#64748b" font-size="11.5">(local vars, before the call)</text>
+
+    <rect x="140" y="120" width="360" height="55" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="320" y="143" text-anchor="middle" fill="#1d4ed8">return address</text>
+    <text x="320" y="161" text-anchor="middle" fill="#1d4ed8" font-size="11.5">pushed automatically by `call`</text>
+
+    <rect x="140" y="175" width="360" height="55" fill="#fde68a" stroke="#b45309"/>
+    <text x="320" y="198" text-anchor="middle" fill="#92400e">saved old rbp</text>
+    <text x="320" y="216" text-anchor="middle" fill="#92400e" font-size="11.5">pushed by callee's `push rbp`</text>
+
+    <rect x="140" y="230" width="360" height="80" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="320" y="256" text-anchor="middle" fill="#166534">callee's local variables</text>
+    <text x="320" y="274" text-anchor="middle" fill="#166534" font-size="11.5">grows further down as callee pushes more</text>
+    <text x="320" y="292" text-anchor="middle" fill="#166534" font-size="11.5">(reached via fixed offsets from rbp)</text>
+  </g>
+
+  <!-- rbp pointer -->
+  <line x1="510" y1="202" x2="560" y2="202" stroke="#b45309" stroke-width="2"/>
+  <polygon points="510,202 520,197 520,207" fill="#b45309"/>
+  <text x="565" y="207" font-size="13" fill="#92400e">rbp</text>
+  <text x="565" y="222" font-size="11" fill="#92400e">(fixed for this function's lifetime)</text>
+
+  <!-- rsp pointer -->
+  <line x1="510" y1="300" x2="560" y2="300" stroke="#166534" stroke-width="2"/>
+  <polygon points="510,300 520,295 520,305" fill="#166534"/>
+  <text x="565" y="305" font-size="13" fill="#166534">rsp</text>
+  <text x="565" y="320" font-size="11" fill="#166534">(current top — moves with every push/pop)</text>
+
+  <text x="320" y="345" text-anchor="middle" font-size="12" fill="#475569">On `ret`: rsp is walked back up to the return-address box, which is popped into rip.</text>
+  <text x="320" y="362" text-anchor="middle" font-size="12" fill="#475569">Any push left un-popped before `ret` shifts this alignment and `ret` jumps to garbage.</text>
+</svg>
