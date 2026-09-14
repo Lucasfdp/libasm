@@ -76,9 +76,9 @@ phase 2, 4 or 5.
 - [x] `ft_strlen`
 - [x] `ft_strcpy`
 - [x] `ft_strcmp`
-- [ ] `ft_write`
-- [ ] `ft_read`
-- [ ] `ft_strdup`
+- [x] `ft_write`
+- [x] `ft_read`
+- [x] `ft_strdup`
 - [ ] bonus
 
 ---

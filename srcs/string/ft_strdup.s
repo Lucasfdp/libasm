@@ -1,3 +1,4 @@
+section .note.GNU-stack noalloc noexec nowrite progbits
 extern ft_strlen
 extern ft_strcpy
 extern malloc

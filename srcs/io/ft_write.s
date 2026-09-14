@@ -1,3 +1,4 @@
+section .note.GNU-stack noalloc noexec nowrite progbits
 extern __errno_location
 
 section .text
