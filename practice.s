@@ -7,10 +7,10 @@ section .text
 	global _start
 	_start:
 		mov r12, 0
-		_loop:
+		.loop:
 			add r12, 1
 			cmp r12, 9
-			jne _loop
+			jne .loop
 		mov rax, 1
 		mov rdi, 0
 		add r12, 0x30

@@ -10,7 +10,7 @@
 
 NAME      := libasm_tests
 LIB_DIR   := ..
-LIB       := $(LIB_DIR)/libasm.a
+LIB       := $(LIB_DIR)/libasm_bonus.a
 
 CC        := gcc
 CFLAGS    := -Wall -Wextra -g3 -O0
@@ -79,7 +79,7 @@ $(OBJ_DIR):
 # every .s we can find.
 lib:
 	@if [ -f $(LIB_DIR)/Makefile ]; then \
-		$(MAKE) --no-print-directory -C $(LIB_DIR); \
+		$(MAKE) --no-print-directory -C $(LIB_DIR) bonus; \
 	else \
 		$(MAKE) --no-print-directory fallback-lib; \
 	fi

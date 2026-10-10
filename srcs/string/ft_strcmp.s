@@ -6,7 +6,7 @@ section .text
 		sub rdi, 1
 		sub rsi, 1
 		push rbx
-		_loop:
+		.loop:
 			inc rdi
 			inc rsi
 			mov byte al, [rdi]
@@ -16,7 +16,7 @@ section .text
 			test al, al
 			je .equal
 			cmp byte [rsi], 0
-			jne _loop
+			jne .loop
 		.diff:
 			movzx eax, al
 			movzx ebx, bl

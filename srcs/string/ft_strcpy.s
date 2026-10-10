@@ -7,12 +7,12 @@ section .text
 		mov rax, rdi
 		sub rsi, 1
 		sub rdi, 1
-		_loop:
+		.loop:
 			inc rsi
 			inc rdi
 			mov byte r12b, [rsi]
 			mov byte [rdi], r12b
 			cmp byte [rsi], 0
-			jne _loop
+			jne .loop
 		pop r12
 		ret

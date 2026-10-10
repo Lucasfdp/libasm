@@ -10,8 +10,8 @@ section .text
 		syscall
 		test rax, rax
 		js .error
-		pop r12
 		pop r13
+		pop r12
 		ret
 		.error:
 			neg rax
@@ -20,6 +20,6 @@ section .text
 			mov r12, rax
 			mov [r12], r13d
 			mov rax, -1
-			pop r12
 			pop r13
+			pop r12
 			ret
